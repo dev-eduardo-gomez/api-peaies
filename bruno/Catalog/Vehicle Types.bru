@@ -1,0 +1,16 @@
+meta {
+  name: Vehicle Types
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/api/v1/catalogs/vehicle-types
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

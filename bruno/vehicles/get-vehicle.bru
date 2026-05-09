@@ -1,0 +1,25 @@
+meta {
+  name: Get Vehicle
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/v1/vehicles/{{vehicleId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+vars:pre-request {
+  vehicleId: 74da148b-145d-4d8e-9fba-652956178562
+  accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNGU2ODE3My1mMDBkLTRjYjYtOTMzYS00NDcyOTAwZmI1YWUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzc4MTMwNjI3LCJleHAiOjE3NzgxMzQyMjd9.oVaOvGKylWDmftRhWMsR0C4guWfPHEDDuNGZtDYEL6g
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

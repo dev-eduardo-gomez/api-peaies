@@ -1,0 +1,15 @@
+meta {
+  name: Fuel Types
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/v1/catalogs/fuel-types
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
