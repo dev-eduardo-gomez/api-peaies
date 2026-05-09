@@ -1,9 +1,0 @@
-export enum CargoTypeCode {
-  NONE = 'NONE',
-  DRY = 'DRY',
-  REFRIGERATED = 'REFRIGERATED',
-  HAZMAT = 'HAZMAT',
-  LIQUID = 'LIQUID',
-  LIVESTOCK = 'LIVESTOCK',
-  OVERSIZED = 'OVERSIZED',
-}
