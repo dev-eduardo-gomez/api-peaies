@@ -6,6 +6,20 @@ export interface AcceptedTag {
   isPrimary: boolean;
 }
 
+export interface TollBoothSummary {
+  id: string;
+  externalId: number | null;
+  name: string;
+  road: string | null;
+  state: string | null;
+  country: string;
+  systemType: string;
+  heightRestrictionM: number | null;
+  lat: number;
+  lng: number;
+  operator: TollOperator | null;
+}
+
 export interface TollBoothCatalog {
   id: string;
   externalId: number | null;

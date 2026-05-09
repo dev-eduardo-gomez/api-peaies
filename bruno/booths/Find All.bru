@@ -1,0 +1,25 @@
+meta {
+  name: Find All
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/v1/booths?page=2&limit=10
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 2
+  limit: 10
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNGU2ODE3My1mMDBkLTRjYjYtOTMzYS00NDcyOTAwZmI1YWUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzc4MzEyNjg4LCJleHAiOjE3NzgzMTYyODh9.xWmJ2b4FLKZkWgWVEA1FtHCL4cO7mTE43VkQ6XSJ7ig
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -12,6 +12,7 @@ import { LoggingInterceptor } from './shared/interceptors/logging.interceptor';
 import { AuthModule } from './auth/auth.module';
 import { CatalogModule } from './catalogs/catalog.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
+import { BoothModule } from './booths/booths.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { VehiclesModule } from './vehicles/vehicles.module';
     AuthModule,
     CatalogModule,
     VehiclesModule,
+    BoothModule,
   ],
   controllers: [AppController],
   providers: [

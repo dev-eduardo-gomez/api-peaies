@@ -1,21 +1,33 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
-export class TollBoothRate {
+export class TollBoothRateDto {
   @ApiProperty({ example: '2AxlesAuto' })
-  vehicleType: string;
+  vehicleTypeCode: string;
 
-  @ApiProperty({ example: 109.0 })
-  cash: number;
+  @ApiPropertyOptional({ example: 109.0 })
+  cash: number | null;
 
-  @ApiProperty({ example: 109.0 })
-  tagPrimary: number;
+  @ApiPropertyOptional({ example: 109.0 })
+  tagPrimary: number | null;
 
-  @ApiProperty({ example: 109.0 })
-  tagSecondary: number;
+  @ApiPropertyOptional({ example: 98.0 })
+  tagSecondary: number | null;
 
-  @ApiProperty({ example: 109.0 })
-  licensePlateCost: number;
+  @ApiPropertyOptional({ example: 109.0 })
+  licensePlateCost: number | null;
 
-  @ApiProperty({ example: 109.0 })
-  prepaidCardCost: number;
+  @ApiPropertyOptional({ example: 109.0 })
+  prepaidCardCost: number | null;
+
+  @ApiProperty({ example: 'MXN' })
+  currency: string;
+
+  @ApiProperty({ example: '2024-01-01' })
+  validFrom: Date;
+
+  @ApiProperty({
+    example: 'OFFICIAL',
+    enum: ['OFFICIAL', 'MANUAL', 'TOLLGURU'],
+  })
+  source: string;
 }
