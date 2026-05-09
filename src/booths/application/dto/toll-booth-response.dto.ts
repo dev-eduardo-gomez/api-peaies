@@ -25,10 +25,10 @@ export class TollBoothResponseDto {
   name: string;
 
   @ApiProperty({ example: 'Puente El Zacatal', nullable: true })
-  road: string;
+  road: string | null;
 
   @ApiProperty({ example: 'Campeche', nullable: true })
-  state: string;
+  state: string | null;
 
   @ApiProperty({ example: 'MEX' })
   country: string;
@@ -43,7 +43,7 @@ export class TollBoothResponseDto {
   systemType: string;
 
   @ApiProperty({ example: 4.5, nullable: true })
-  heightRestrictionM: number;
+  heightRestrictionM: number | null;
 
   @ApiProperty({ type: TollBoothOperatorDto, nullable: true })
   operator: TollBoothOperatorDto | null;

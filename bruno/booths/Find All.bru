@@ -5,18 +5,23 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/api/v1/booths?page=2&limit=10
+  url: {{baseUrl}}/api/v1/booths?page={{page}}&limit={{limit}}
   body: none
   auth: bearer
 }
 
 params:query {
-  page: 2
-  limit: 10
+  page: {{page}}
+  limit: {{limit}}
 }
 
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNGU2ODE3My1mMDBkLTRjYjYtOTMzYS00NDcyOTAwZmI1YWUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzc4MzEyNjg4LCJleHAiOjE3NzgzMTYyODh9.xWmJ2b4FLKZkWgWVEA1FtHCL4cO7mTE43VkQ6XSJ7ig
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNGU2ODE3My1mMDBkLTRjYjYtOTMzYS00NDcyOTAwZmI1YWUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzc4MzU0MTU5LCJleHAiOjE3NzgzNTc3NTl9.iaJK6Z__Dfb3dS7Srxs9FChxPbjCecmh5-X4O3p9tm4
+}
+
+vars:pre-request {
+  page: 5
+  limit: 3
 }
 
 settings {

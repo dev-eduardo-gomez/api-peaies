@@ -1,0 +1,32 @@
+meta {
+  name: Find Nearby
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/v1/booths/nearby?lat={{lat}}&lng={{lng}}&radiusKm={{radius}}
+  body: none
+  auth: bearer
+}
+
+params:query {
+  lat: {{lat}}
+  lng: {{lng}}
+  radiusKm: {{radius}}
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNGU2ODE3My1mMDBkLTRjYjYtOTMzYS00NDcyOTAwZmI1YWUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzc4MzUyNTM0LCJleHAiOjE3NzgzNTYxMzR9.pWajQQjrd6mxsSMIav3tDG8w0uYaOxgg17yaJElBtyk
+}
+
+vars:pre-request {
+  lat: 18.612621
+  lng: -91.860885
+  radius: 100
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

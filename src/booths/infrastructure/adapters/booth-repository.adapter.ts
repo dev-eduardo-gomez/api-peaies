@@ -2,7 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { BoothRepositoryPort } from '../../domain/ports/out/booth-repository.port';
 import { InjectEntityManager } from '@nestjs/typeorm';
 import { EntityManager } from 'typeorm';
-import { TollBoothCatalog } from '../../domain/model/toll-booth-catalog.model';
+import {
+  TollBoothCatalog,
+  TollBoothSummary,
+} from '../../domain/model/toll-booth-catalog.model';
 import { BOOTH_QUERIES } from '../persistence/booth.queries';
 import { TollOperator } from '../../domain/model/toll-operator.model';
 import { TollBoothRate } from '../../domain/model/toll-booth-rate.model';
@@ -18,22 +21,22 @@ export class BoothRepositoryAdapter extends BoothRepositoryPort {
   async findAll(
     limit: number,
     offset: number,
-  ): Promise<{ data: TollBoothCatalog[]; total: number }> {
-    const rows: TollBoothCatalog[] = await this.entityManager.query(
+  ): Promise<{ data: TollBoothSummary[]; total: number }> {
+    const rows: TollBoothSummary[] = await this.entityManager.query(
       BOOTH_QUERIES.FIND_ALL,
       [limit, offset],
     );
 
     return rows.length > 0
-      ? { data: rows.map((i) => this.toDomain(i)), total: rows.length }
+      ? { data: rows.map((i) => this.toSummaryDomain(i)), total: rows.length }
       : { data: [], total: 0 };
   }
 
   async countAll(): Promise<number> {
-    const count: number = await this.entityManager.query(
+    const rows: { total: string }[] = await this.entityManager.query(
       BOOTH_QUERIES.COUNT_ALL,
     );
-    return count > 0 ? count : 0;
+    return Number(rows[0]?.total ?? 0);
   }
 
   async findById(id: string): Promise<TollBoothCatalog | null> {
@@ -67,6 +70,32 @@ export class BoothRepositoryAdapter extends BoothRepositoryPort {
     );
 
     return rows.length > 0 ? rows[0] : null;
+  }
+
+  private toSummaryDomain(row: Record<string, any>): TollBoothSummary {
+    return {
+      id: row.id as string,
+      externalId: row.external_id != null ? Number(row.external_id) : null,
+      name: row.name as string,
+      road: (row.road as string) ?? null,
+      state: (row.state as string) ?? null,
+      country: row.country as string,
+      lat: Number(row.lat),
+      lng: Number(row.lng),
+      systemType: row.system_type as string,
+      heightRestrictionM:
+        row.height_restriction_m != null
+          ? Number(row.height_restriction_m)
+          : null,
+      operator: row.operator_code
+        ? {
+            code: row.operator_code as string,
+            name: row.operator_name as string,
+            country: row.country as string,
+            website: null,
+          }
+        : null,
+    };
   }
 
   private toDomain(row: Record<string, any>): TollBoothCatalog {
