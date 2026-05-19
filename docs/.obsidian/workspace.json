@@ -1,0 +1,216 @@
+{
+  "main": {
+    "id": "d820ac16953e0f63",
+    "type": "split",
+    "children": [
+      {
+        "id": "0b7a9bd191fd381b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c145806a1dc9e770",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "toll-calculation.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "toll-calculation"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "46cc05535f83ac0c",
+    "type": "split",
+    "children": [
+      {
+        "id": "42b6685ea85fad14",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c95352957c115ea1",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "195572778bdebb3b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "0492001ba1b4114e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0019a61ad8e958cb",
+    "type": "split",
+    "children": [
+      {
+        "id": "50a345040a2b7e3b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5db850f3740cab94",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "brain/consejos/deploy.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de deploy"
+            }
+          },
+          {
+            "id": "51b717846ec1f80e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "brain/consejos/deploy.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de deploy"
+            }
+          },
+          {
+            "id": "29f90e70e71643c2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "e18660e75cf6f563",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "03e8dee1c60e431c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "brain/consejos/deploy.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de deploy"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "c145806a1dc9e770",
+  "lastOpenFiles": [
+    "bruno-test-data.md",
+    "toll-calculation.md.tmp.186228.1ecbc8efd62a",
+    "toll-calculation.md.tmp.186228.ed62c7e698ac",
+    "testing-guide.md",
+    "bruno-test-data.md.tmp.107634.ba8c4bd79297",
+    "routing-module-guide.md",
+    "toll-calculation.md",
+    "testing-guide.md.tmp.107634.3d12a0af2049",
+    "project-plan-template.md",
+    "project-plan-template.md.tmp.107634.4af0350d5e01",
+    "toll-calculation.md.tmp.107634.1b838f153317",
+    "brain/consejos/seguridad.md",
+    "github/README.md",
+    "brain/consejos/testing-strategy.md",
+    "brain/guia-de-tests.md",
+    "brain/guia-de-tests.md.tmp.102458.2a085628beea",
+    "github/architecture.md",
+    "brain/consejos/deploy.md",
+    "brain/consejos/deploy.md.tmp.102458.729026cdd40b",
+    "brain/consejos/seguridad.md.tmp.102458.376a19ac227c",
+    "brain/consejos/performance.md.tmp.102458.0346fbe7fab0",
+    "brain/_index.md",
+    "brain/ideas/mejoras-arquitectura.md",
+    "brain/ideas/integraciones-futuras.md",
+    "brain/ideas/features-pendientes.md",
+    "brain/consejos/performance.md",
+    "github/auth-flow.md"
+  ]
+}

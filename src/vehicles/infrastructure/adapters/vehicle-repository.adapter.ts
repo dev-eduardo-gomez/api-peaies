@@ -51,38 +51,36 @@ export class VehicleRepositoryAdapter extends VehicleRepositoryPort {
   async save(vehicle: CreateVehicleCommand): Promise<Vehicle> {
     const transaction: { vehicleId: string } =
       await this.entityManager.transaction(async (tx: EntityManager) => {
-        const created: { id: string } = await tx.query(
-          VEHICLE_QUERIES.INSERT_VEHICLE,
-          [
-            vehicle.userId,
-            vehicle.alias,
-            vehicle.plate ?? null,
-            vehicle.vehicleTypeCode,
-            vehicle.fuelTypeCode,
-            vehicle.cargoTypeCode ?? null,
-            vehicle.engine?.displacementCc ?? null,
-            vehicle.engine?.cylinders ?? null,
-            vehicle.engine?.horsepower ?? null,
-            vehicle.year ?? null,
-            vehicle.brand ?? null,
-            vehicle.model ?? null,
-            vehicle.dimensions.weightKg,
-            vehicle.dimensions.heightM ?? null,
-            vehicle.dimensions.lengthM ?? null,
-            vehicle.dimensions.widthM ?? null,
-            vehicle.dimensions.axles,
-            vehicle.cargoWeightKg ?? null,
-            vehicle.maxCargoCapacityKg ?? null,
-            vehicle.efficiency?.cityKmpl ?? null,
-            vehicle.efficiency?.hwyKmpl ?? null,
-            vehicle.efficiency?.tankCapacityL ?? null,
-            vehicle.emissionClass ?? null,
-          ],
-        );
+        await tx.query(VEHICLE_QUERIES.INSERT_VEHICLE, [
+          vehicle.id,
+          vehicle.userId,
+          vehicle.alias,
+          vehicle.plate ?? null,
+          vehicle.vehicleTypeCode,
+          vehicle.fuelTypeCode,
+          vehicle.cargoTypeCode ?? null,
+          vehicle.engine?.displacementCc ?? null,
+          vehicle.engine?.cylinders ?? null,
+          vehicle.engine?.horsepower ?? null,
+          vehicle.year ?? null,
+          vehicle.brand ?? null,
+          vehicle.model ?? null,
+          vehicle.dimensions.weightKg,
+          vehicle.dimensions.heightM ?? null,
+          vehicle.dimensions.lengthM ?? null,
+          vehicle.dimensions.widthM ?? null,
+          vehicle.dimensions.axles,
+          vehicle.cargoWeightKg ?? null,
+          vehicle.maxCargoCapacityKg ?? null,
+          vehicle.efficiency?.cityKmpl ?? null,
+          vehicle.efficiency?.hwyKmpl ?? null,
+          vehicle.efficiency?.tankCapacityL ?? null,
+          vehicle.emissionClass ?? null,
+        ]);
 
-        this.logger.log(`Vehicle created: ${created.id}`);
+        this.logger.log(`Vehicle created: ${vehicle.id}`);
         return {
-          vehicleId: created.id,
+          vehicleId: vehicle.id,
         };
       });
 

@@ -1,0 +1,37 @@
+meta {
+  name: Calculate Toll
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/v1/tolls/calculate
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "origin": { "lat": 18.612621, "lng": -91.860885, "address": "Ciudad del Carmen, Campeche" },
+    "destination": { "lat": 25.686614, "lng": -100.316113, "address": "Monterrey, Nuevo León" },
+    "vehicleId": "{{vehicleId}}",
+    "departureTime": "2025-06-01T08:00:00.000Z",
+    "preferredPaymentMethod": "CASH"
+  }
+}
+
+script:post-response {
+  var data = res.getBody();
+  if ((res.getStatus() === 200 || res.getStatus() === 201) && data.id) {
+    bru.setEnvVar("calculationId", data.id);
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

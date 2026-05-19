@@ -1,0 +1,34 @@
+meta {
+  name: Nearby POIs
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/v1/pois/nearby?lat={{lat}}&lng={{lng}}&radiusKm={{radiusKm}}&type={{type}}
+  body: none
+  auth: bearer
+}
+
+params:query {
+  lat: {{lat}}
+  lng: {{lng}}
+  radiusKm: {{radiusKm}}
+  type: {{type}}
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+vars:pre-request {
+  lat: 19.432608
+  lng: -99.133209
+  radiusKm: 5
+  type: GAS_STATION
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,24 @@
+meta {
+  name: Cheapest Route
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/api/v1/tolls/history/{{calculationId}}/cheapest-route
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+vars:pre-request {
+  calculationId: {{calculationId}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

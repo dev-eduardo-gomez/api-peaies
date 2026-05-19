@@ -10,7 +10,7 @@ import { AuthResponseDto } from '../dto/auth-response.dto';
 import { EmailAlreadyExistsException } from '../../domain/exceptions/email-already-exists.exception';
 import { AuthUser } from '../../domain/model/auth-user.model';
 import { v4 as uuidv4 } from 'uuid';
-import { sha256 } from '@nestjs/throttler/dist/hash';
+import { sha256 } from '../../../shared/util/hash.util';
 import { LoginRequestDto } from '../dto/login-request.dto';
 import { InvalidCredentialsException } from '../../domain/exceptions/invalid-credentials.exception';
 import { RefreshTokenRequestDto } from '../dto/refresh-token-request.dto';

@@ -18,5 +18,6 @@ import { CatalogApplicationService } from './application/services/catalog-applic
       useClass: CatalogApplicationService,
     },
   ],
+  exports: [CatalogRepositoryPort],
 })
 export class CatalogModule {}

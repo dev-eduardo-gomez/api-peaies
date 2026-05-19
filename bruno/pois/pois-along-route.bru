@@ -1,0 +1,32 @@
+meta {
+  name: POIs Along Route
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/v1/pois/along-route?polylines={{polylines}}&corridorMeters={{corridorMeters}}&type={{type}}
+  body: none
+  auth: bearer
+}
+
+params:query {
+  polylines: {{polylines}}
+  corridorMeters: {{corridorMeters}}
+  type: {{type}}
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+vars:pre-request {
+  polylines:
+  corridorMeters: 500
+  type: GAS_STATION
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,5 +1,6 @@
 import {
   Controller,
+  DefaultValuePipe,
   Get,
   HttpCode,
   HttpStatus,
@@ -30,8 +31,8 @@ export class BoothController {
   @ApiOperation({ summary: 'List all booths' })
   @ApiResponse({ status: 200, type: TollBoothSummaryDto })
   findAll(
-    @Query('page', ParseIntPipe) page: number,
-    @Query('limit', ParseIntPipe) limit: number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
   ): Promise<{
     data: TollBoothSummaryDto[];
     total: number;

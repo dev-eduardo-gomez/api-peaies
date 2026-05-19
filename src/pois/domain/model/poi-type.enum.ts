@@ -1,0 +1,7 @@
+export enum PoiType {
+  GAS_STATION = 'GAS_STATION',
+  REST_AREA = 'REST_AREA',
+  RESTAURANT = 'RESTAURANT',
+  HOTEL = 'HOTEL',
+  EV_CHARGING = 'EV_CHARGING',
+}

@@ -1,0 +1,30 @@
+meta {
+  name: Calculation History
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/v1/tolls/history?page={{page}}&limit={{limit}}
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: {{page}}
+  limit: {{limit}}
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+vars:pre-request {
+  page: 1
+  limit: 10
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

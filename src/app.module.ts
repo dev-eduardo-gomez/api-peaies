@@ -13,6 +13,9 @@ import { AuthModule } from './auth/auth.module';
 import { CatalogModule } from './catalogs/catalog.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
 import { BoothModule } from './booths/booths.module';
+import { PoisModule } from './pois/pois.module';
+import { RoutingModule } from './routing/routing.module';
+import { AuditsModule } from './audits/audits.module';
 
 @Module({
   imports: [
@@ -40,6 +43,9 @@ import { BoothModule } from './booths/booths.module';
     CatalogModule,
     VehiclesModule,
     BoothModule,
+    PoisModule,
+    RoutingModule,
+    AuditsModule,
   ],
   controllers: [AppController],
   providers: [

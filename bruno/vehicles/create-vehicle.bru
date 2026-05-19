@@ -16,37 +16,32 @@ auth:bearer {
 
 body:json {
   {
-    "alias": "Mi Versa",
-    "plate": "ABC-123",
-    "vehicleTypeCode": "2AxlesAuto",
-    "fuelTypeCode": "MAGNA",
-    "cargoTypeCode": "NONE",
-    "engine": {
-      "displacementCc": 1600,
-      "cylinders": 4,
-      "horsepower": 106
-    },
-    "year": 2022,
-    "brand": "Nissan",
-    "model": "Versa",
+    "alias": "Tráiler Norte",
+    "plate": "TRL-001",
+    "vehicleTypeCode": "5AxlesTruck",
+    "fuelTypeCode": "DIESEL",
+    "cargoTypeCode": "DRY",
+    "engine": { "displacementCc": 12900, "cylinders": 6, "horsepower": 510 },
+    "year": 2020,
+    "brand": "Kenworth",
+    "model": "T680",
     "dimensions": {
-      "weightKg": 1150,
-      "heightM": 1.50,
-      "lengthM": 4.37,
-      "widthM": 1.70,
-      "axles": 2
+      "weightKg": 36000,
+      "heightM": 4.10,
+      "lengthM": 22.0,
+      "widthM": 2.59,
+      "axles": 5
     },
-    "efficiency": {
-      "cityKmpl": 12.5,
-      "hwyKmpl": 16.0,
-      "tankCapacityL": 41
-    },
-    "tags": ["IAVE", "TAG_PASE"]
+    "efficiency": { "cityKmpl": 3.0, "hwyKmpl": 4.5, "tankCapacityL": 600 },
+    "tags": []
   }
 }
 
-vars:pre-request {
-  accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNGU2ODE3My1mMDBkLTRjYjYtOTMzYS00NDcyOTAwZmI1YWUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzc4MTI2MjcwLCJleHAiOjE3NzgxMjk4NzB9.f7K9ACXvWW9lvzkNUtcW2MSGW8KKFFX9rqdrlRlUp00
+script:post-response {
+  var data = res.getBody();
+  if (res.getStatus() === 201 && data.id) {
+    bru.setEnvVar("vehicleId", data.id);
+  }
 }
 
 settings {
