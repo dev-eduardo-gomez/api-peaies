@@ -39,6 +39,10 @@ interface BoothRow {
   currency: string | null;
 }
 
+const FUEL_PRICE_QUERY = `
+  SELECT avg_price_mxn FROM fuel_types WHERE code = $1 LIMIT 1
+`;
+
 // $1 minLat  $2 maxLat  $3 minLng  $4 maxLng  $5 vehicleTypeCode  $6 originLat  $7 originLng
 const CORRIDOR_QUERY = `
   SELECT
@@ -81,6 +85,27 @@ export class LocalDbTollProviderAdapter extends TollProviderPort {
     private readonly vehicleRepo: VehicleRepositoryPort,
   ) {
     super();
+  }
+
+  private async calculateFuelCost(
+    fuelCode: string,
+    hwyKmpl: number | null,
+    distanceMeters: number,
+  ): Promise<number> {
+    if (!hwyKmpl || hwyKmpl <= 0) return 0;
+
+    const rows: { avg_price_mxn: string | null }[] = await this.em.query(
+      FUEL_PRICE_QUERY,
+      [fuelCode],
+    );
+    const pricePerLiter = rows[0]?.avg_price_mxn
+      ? parseFloat(rows[0].avg_price_mxn)
+      : 0;
+    if (pricePerLiter <= 0) return 0;
+
+    const distanceKm = distanceMeters / 1000;
+    const liters = distanceKm / hwyKmpl;
+    return Math.round(liters * pricePerLiter * 100) / 100;
   }
 
   async calculateRoute(command: CalculateTollCommand): Promise<Route[]> {
@@ -127,9 +152,22 @@ export class LocalDbTollProviderAdapter extends TollProviderPort {
       };
     });
 
+    const totalCash = tolls.reduce((sum, t) => sum + t.cashCost.amount, 0);
+    const totalTag = tolls.reduce((sum, t) => sum + t.tagCost.amount, 0);
+    const tollsTotal =
+      preferredMethod === PaymentMethod.TAG ? totalTag : totalCash;
+
     const straightMeters = haversineMeters(oLat, oLng, dLat, dLng);
     const distanceMeters = Math.round(straightMeters * ROAD_FACTOR);
     const durationSeconds = Math.round(distanceMeters / AVG_SPEED_MPS);
+
+    const fuelAmount = await this.calculateFuelCost(
+      vehicle?.fuelType.code ?? 'MAGNA',
+      vehicle?.efficiency.hwyKmpl ?? null,
+      distanceMeters,
+    );
+
+    const grandTotal = tollsTotal + fuelAmount;
 
     return [
       {
@@ -140,10 +178,10 @@ export class LocalDbTollProviderAdapter extends TollProviderPort {
         durationSeconds,
         tollCount: tolls.length,
         costs: {
-          tagCost: { amount: 0, currency: 'MXN' },
-          cashCost: { amount: 0, currency: 'MXN' },
-          fuelCost: { amount: 0, currency: 'MXN' },
-          grandTotal: { amount: 0, currency: 'MXN' },
+          tagCost: { amount: totalTag, currency: 'MXN' },
+          cashCost: { amount: totalCash, currency: 'MXN' },
+          fuelCost: { amount: fuelAmount, currency: 'MXN' },
+          grandTotal: { amount: grandTotal, currency: 'MXN' },
         },
         tolls,
         directions: [],
